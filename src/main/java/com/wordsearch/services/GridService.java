@@ -35,8 +35,9 @@ public class GridService {
 			}
 
 		}
-		Collections.shuffle(coordinates);
-		for (String word : words) {
+		
+		for (String word : words) {  
+			Collections.shuffle(coordinates);
 			for (Coordinate coordinate : coordinates) {
 				int x = coordinate.getX();
 				int y = coordinate.getY();
@@ -83,9 +84,7 @@ public class GridService {
 
 	private Direction getdirectiontofit(String word, Coordinate coordinate,List<Direction> directions,char[][] contents) {
 		
-
 		Collections.shuffle(directions);
-
 		for (Direction direction : directions) {
 			boolean foo = check(coordinate, word, direction,contents);
 			if(foo==true) return direction;
@@ -103,7 +102,7 @@ public class GridService {
 			if (coordinate.getY() + word.length() >= gridSize)
 				return false;
 			for (int i = 0; i < word.length(); i++) {
-				if (contents[coordinate.getX()][coordinate.getY() + i] != '_')
+				if (contents[coordinate.getX()][coordinate.getY() + i] != '_' && contents[coordinate.getX()][coordinate.getY() + i] != word.charAt(i)) 
 					return false;
 			}
 			break;
@@ -112,7 +111,7 @@ public class GridService {
 			if (coordinate.getX() + word.length() >= gridSize)
 				return false;
 			for (int i = 0; i < word.length(); i++) {
-				if (contents[coordinate.getX()+i][coordinate.getY()] != '_')
+				if (contents[coordinate.getX()+i][coordinate.getY()] != '_' && contents[coordinate.getX()+i][coordinate.getY()] != word.charAt(i))
 					return false;
 			}
 			break;
@@ -122,7 +121,7 @@ public class GridService {
 			if (coordinate.getY() + word.length() >= gridSize || coordinate.getX() + word.length() >= gridSize)
 				return false;
 			for (int i = 0; i < word.length(); i++) {
-				if (contents[coordinate.getX()+i][coordinate.getY()+i] != '_')
+				if (contents[coordinate.getX()+i][coordinate.getY()+i] != '_' && contents[coordinate.getX()+i][coordinate.getY()+i] != word.charAt(i))
 					return false;
 			}
 			break;
@@ -132,7 +131,7 @@ public class GridService {
 			if (coordinate.getY()<word.length())
 				return false;
 			for (int i = 0; i < word.length(); i++) {
-				if (contents[coordinate.getX()][coordinate.getY() - i] != '_')
+				if (contents[coordinate.getX()][coordinate.getY() - i] != '_' && contents[coordinate.getX()][coordinate.getY() - i] != word.charAt(i))
 					return false;
 			}
 			break;
@@ -141,7 +140,7 @@ public class GridService {
 			if (coordinate.getX()<word.length())
 				return false;
 			for (int i = 0; i < word.length(); i++) {
-				if (contents[coordinate.getX()-i][coordinate.getY()] != '_')
+				if (contents[coordinate.getX()-i][coordinate.getY()] != '_' && contents[coordinate.getX()-i][coordinate.getY()] != word.charAt(i))
 					return false;
 			}
 			break;
@@ -151,7 +150,7 @@ public class GridService {
 			if (coordinate.getY()<word.length() || coordinate.getX() < word.length())
 				return false;
 			for (int i = 0; i < word.length(); i++) {
-				if (contents[coordinate.getX()-i][coordinate.getY()-i] != '_')
+				if (contents[coordinate.getX()-i][coordinate.getY()-i] != '_' && contents[coordinate.getX()-i][coordinate.getY()-i] != word.charAt(i))
 					return false;
 			}
 			break;

@@ -7,12 +7,14 @@ import java.util.List;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wordsearch.services.GridService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:1234")
 public class WordSearchController {
 
 	@Autowired
@@ -24,14 +26,6 @@ public class WordSearchController {
 		List<String> words = Arrays.asList(wordlist.split(","));
             words.forEach(System.out::println);
 		char[][] grid = gridService.fillgrid(gridsize, words);
-		
-		for (int i = 0; i < gridsize; i++) {
-
-			for (int j = 0; j < gridsize; j++) {
-				System.out.print(grid[i][j]+ " ");
-			}
-			System.out.println("");
-		}
 
 		String gridtostring = "";
 
