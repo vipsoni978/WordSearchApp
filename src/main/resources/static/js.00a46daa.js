@@ -1156,7 +1156,7 @@ function _fetchGridInfo() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return fetch("http://localhost:8080/wordsearch?gridsize=".concat(gridSize, "&wordlist=").concat(commaSeperatedWords));
+            return fetch("./wordsearch?gridsize=".concat(gridSize, "&wordlist=").concat(commaSeperatedWords));
 
           case 2:
             responce = _context2.sent;
@@ -1204,7 +1204,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56640" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59152" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
